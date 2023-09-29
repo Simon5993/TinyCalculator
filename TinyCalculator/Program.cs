@@ -1,17 +1,33 @@
 ﻿Console.WriteLine("== Tiny calculator ==");
 
-Console.Write("Divident: ");
-if (!int.TryParse(Console.ReadLine(), out int divident))
+int divident;
+while(true)
 {
-    Console.WriteLine("Not a number. Bye");
-    return;
+    Console.Write("Divident: ");
+    string input = Console.ReadLine();
+    if (int.TryParse(input, out divident))
+    {
+        break;
+       
+    }
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine($"{input} is not a number.");
+    Console.ResetColor();
 }
 
-Console.Write("Divisor: ");
-if (!int.TryParse(Console.ReadLine(), out int divisor))
+int divisor;
+while (true)
 {
-    Console.WriteLine("Not a number. Bye");
-    return;
+    Console.Write("Divident: ");
+    string input = Console.ReadLine();
+    if (int.TryParse(input, out divisor))
+    {
+        break;
+        
+    }
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine($"{input} is not a number.");
+    Console.ResetColor();
 }
 
 Console.ForegroundColor = ConsoleColor.Green;
