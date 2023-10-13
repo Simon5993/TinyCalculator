@@ -1,10 +1,9 @@
-﻿Console.WriteLine("== Tiny calculator ==");
+﻿using System.ComponentModel.Design;
 
-Console.Write("Dividend: ");
-int dividend = int.Parse(Console.ReadLine());
+Console.WriteLine("== Tiny calculator ==");
 
-Console.Write("Divisor: ");
-int divisor = int.Parse(Console.ReadLine());
+int dividend = ReadNumber("Dividend");
+int divisor = ReadNumber("Divisor");
 
 if(divisor == 0)
 {
@@ -18,4 +17,23 @@ else
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine($"{dividend} / {divisor} = {dividend / divisor}");
     Console.ResetColor();
+}
+
+int ReadNumber(string s)
+{
+    int val;
+    while (true)
+    {
+        Console.Write($"{s}: ");
+        string input = Console.ReadLine();
+        if (int.TryParse(input, out val))
+        {
+            return val;
+        }
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"{input} is not a number");
+        Console.ResetColor();
+    }
+    
+
 }
