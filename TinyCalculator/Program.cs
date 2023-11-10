@@ -4,9 +4,11 @@ Console.WriteLine("== Tiny calculator ==");
 
 int dividend = ReadNumber("Dividend");
 
+string op = GetOperator();
+
+
 while (dividend > 0)
 {
-    string op = GetOperator();
 
     int divisor = ReadNumber("Divisor");
 
@@ -41,40 +43,40 @@ while (dividend > 0)
             dividend = dividend - divisor;
         }
         Console.ResetColor();
-    }
+    } 
 }
 
 
-int ReadNumber(string s)
-{
-    int val;
-    while (true)
+    int ReadNumber(string s)
     {
-        Console.Write($"{s}: ");
-        string input = Console.ReadLine();
-        if (int.TryParse(input, out val))
+        int val;
+        while (true)
         {
-            return val;
+            Console.Write($"{s}: ");
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out val))
+            {
+                return val;
+            }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{input} is not a number");
+            Console.ResetColor();
         }
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine($"{input} is not a number");
-        Console.ResetColor();
     }
-}
 
-string GetOperator()
-{
-    string val;
-    while (true)
+    string GetOperator()
     {
-        Console.Write($"Select operator: ");
-        val = Console.ReadLine();
-        if (val == "+" || val == "-" || val == "*" || val == "/")
+        string val;
+        while (true)
         {
-            return val;
+            Console.Write($"Select operator: ");
+            val = Console.ReadLine();
+            if (val == "+" || val == "-" || val == "*" || val == "/")
+            {
+                return val;
+            }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{val} is not an operator");
+            Console.ResetColor();
         }
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine($"{val} is not an operator");
-        Console.ResetColor();
-    }    
-}
+    }
